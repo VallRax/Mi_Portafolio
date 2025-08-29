@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Menu inicio-->
+    <div class="contenedor-header">
+        <header>
+            <div class="logo">
+                <a href="#">Jairo</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio">INICIO</a></li>
+                    <li><a href="#sobremi">SOBRE MI</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#curriculum">CURRICULUM</a></li>
+                    <li><a href="#portafolio">PORTAFOLIO</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>    
+
+    <!--Seccion Inicio-->
+    <section id="inicio" class="inicio">
+        <div class="contenido-banner">
+            <div class="contenedor-img">
+                <img src="./Caratulas/Papá.jpeg" alt="">
+            </div>
+            <h1>JAIRO ALVAREZ</h1>
+            <h2>Ingeniero Informatico - Programador Web  y Aplicaciones</h2>
+            <div class="redes">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-solid fa-rss"></i></a>
+            </div>
+        </div>
+    </section>
+
+     <!-- SECCION PORTFOLIO -->
+     <section id="portafolio" class="portfolio">
+        <div class="contenido-seccion">
+            <h2>PORTFOLIO</h2>
+            <div class="galeria">
+                <div class="proyecto">
+                    <a href="./Proyectos/Index.html">
+                        <img  src="./Caratulas/p1.jpg" alt="">
+                        <div class="overlay">
+                            <h3>Proyectos</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="proyecto">
+                    <img src="./Caratulas/starwars.jpg" alt="">
+                    <div class="overlay">
+                        <h3>Ideas nuevas</h3>
+                        <p>Fotografía</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <img src="./Caratulas/p1.jpg" alt="">
+                    <div class="overlay">
+                        <h3>Arquitectura</h3>
+                        <p>Fotografía</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <img src="./Caratulas/p1.jpg" alt="">
+                    <div class="overlay">
+                        <h3>Tiempo Libre</h3>
+                        <p>Fotografía</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <img src="./Caratulas/p1.jpg" alt="">
+                    <div class="overlay">
+                        <h3>Diseño Web </h3>
+                        <p>Fotografía</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <img src="./Caratulas/p1.jpg" alt="">
+                    <div class="overlay">
+                        <h3>Proyecto Final</h3>
+                        <p>Fotografía</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION CONTACTO -->
+    <section id="contacto" class="contacto">
+        <div class="contenido-seccion">
+            <h2>CONTACTO</h2>
+            <div class="fila">
+                <!-- Formulario -->
+                <div class="col">
+                    <input type="text" placeholder="Tú Nombre">
+                    <input type="text" placeholder="Número telefónico">
+                    <input type="text" placeholder="Dirección de correo">
+                    <input type="text" placeholder="Tema">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Mensaje"></textarea>
+                    <button>
+                        Enviar Mensaje<i class="fa-solid fa-paper-plane"></i>
+                        <span class="overlay"></span>
+                    </button>
+                </div>
+                <!-- Mapa -->
+                <div class="col">
+                    <img src="./Caratulas/mapa.png" alt="">
+                    <div class="info">
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Pasaje Aurora #12234 - Chile - Santiago - La Pintana
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                Llamame: +56 9 9756 6652 
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-envelope"></i>
+                                Email: ja.alvarezsalazar@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <a href="#inicio" class="arriba">
+            <i class="fa-solid fa-angles-up"></i>
+        </a>
+        <div class="redes">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-solid fa-rss"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
