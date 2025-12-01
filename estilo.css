@@ -195,6 +195,20 @@ html{
     position: relative;
     z-index: 10;
 }
+.sobremi a.btn-cv{
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #fff;
+    width: fit-content;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 22px;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+    text-decoration: none;
+}
 .sobremi button .overlay{
     position: absolute;
     top: 0;
@@ -206,6 +220,19 @@ html{
     transition: 1s;
 }
 .sobremi button:hover .overlay{
+    width: 100%;
+}
+.sobremi a.btn-cv .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #1CB698;
+    z-index: -1;
+    transition: 1s;
+}
+.sobremi a.btn-cv:hover .overlay{
     width: 100%;
 }
 /* SECCION S K I L L S */
@@ -334,6 +361,84 @@ html{
 @keyframes proyect {
     0%{width: 0%;}
     100%{width: 65%;}
+}
+/* SECCION SERVICIOS */
+.servicios{
+    background-color: #1e2326;
+    color: #fff;
+    padding: 50px 20px;
+}
+.servicios .contenido-seccion{
+    max-width: 1100px;
+    margin: auto;
+}
+.servicios h2{
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+}
+.servicios .cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+.servicios .card{
+    background-color: #252A2E;
+    border-radius: 12px;
+    padding: 24px;
+    flex: 1 1 320px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.servicios .card .icono{
+    font-size: 28px;
+    color: #1CB698;
+}
+.servicios .card h3{
+    font-size: 22px;
+}
+.servicios .card p{
+    line-height: 24px;
+    color: #e6e6e6;
+}
+.servicios .card .acciones{
+    margin-top: 8px;
+    display: flex;
+    gap: 12px;
+}
+.servicios .card .btn-servicio,
+.servicios .card .btn-secundario{
+    display: inline-block;
+    padding: 10px 18px;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+.servicios .card .btn-servicio::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #1CB698;
+    width: 0;
+    z-index: -1;
+    transition: width 0.4s ease;
+}
+.servicios .card .btn-servicio:hover::after{
+    width: 100%;
+}
+.servicios .card .btn-secundario{
+    border-color: #1CB698;
+    color: #1CB698;
+}
+.servicios .card .btn-secundario:hover{
+    color: #0f5e50;
+    background-color: rgba(28,182,152,0.15);
 }
 /* SECCION CURRICULUM */
 .curriculum{
