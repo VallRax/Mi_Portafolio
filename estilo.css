@@ -362,6 +362,163 @@ html{
     0%{width: 0%;}
     100%{width: 65%;}
 }
+
+/* Animaciones para nuevas skills */
+.skills .skill .htmlcss{
+    width: 0%;
+    animation: 2s htmlcss forwards;
+}
+@keyframes htmlcss {
+    0%{width: 0%;}
+    100%{width: 95%;}
+}
+.skills .skill .jstypescript{
+    width: 0%;
+    animation: 2s jstypescript forwards;
+}
+@keyframes jstypescript {
+    0%{width: 0%;}
+    100%{width: 75%;}
+}
+.skills .skill .javaspring{
+    width: 0%;
+    animation: 2s javaspring forwards;
+}
+@keyframes javaspring {
+    0%{width: 0%;}
+    100%{width: 80%;}
+}
+.skills .skill .angularreact{
+    width: 0%;
+    animation: 2s angularreact forwards;
+}
+@keyframes angularreact {
+    0%{width: 0%;}
+    100%{width: 70%;}
+}
+.skills .skill .python{
+    width: 0%;
+    animation: 2s python forwards;
+}
+@keyframes python {
+    0%{width: 0%;}
+    100%{width: 65%;}
+}
+.skills .skill .sqldb{
+    width: 0%;
+    animation: 2s sqldb forwards;
+}
+@keyframes sqldb {
+    0%{width: 0%;}
+    100%{width: 75%;}
+}
+.skills .skill .gitgithub{
+    width: 0%;
+    animation: 2s gitgithub forwards;
+}
+@keyframes gitgithub {
+    0%{width: 0%;}
+    100%{width: 85%;}
+}
+
+/* SECCION CERTIFICACIONES E IDIOMAS */
+.certificaciones{
+    background-color: #252A2E;
+    color: #fff;
+    padding: 50px 20px;
+}
+.certificaciones .contenido-seccion{
+    max-width: 1100px;
+    margin: auto;
+}
+.certificaciones h2{
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+}
+.certificaciones .fila{
+    display: flex;
+    gap: 40px;
+}
+.certificaciones .col{
+    flex: 1;
+}
+.certificaciones .col h3{
+    font-size: 28px;
+    font-family: 'Righteous';
+    margin-bottom: 25px;
+    color: #1CB698;
+}
+.certificaciones .certificacion{
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #1e2326;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.certificaciones .certificacion:hover{
+    transform: translateX(10px);
+}
+.certificaciones .certificacion i{
+    font-size: 28px;
+    color: #1CB698;
+    margin-top: 5px;
+}
+.certificaciones .certificacion .info-cert h4{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.certificaciones .certificacion .info-cert span{
+    color: #999;
+    font-size: 14px;
+}
+.certificaciones .idioma{
+    margin-bottom: 25px;
+}
+.certificaciones .idioma .cabecera-idioma{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.certificaciones .idioma .barra-idioma{
+    height: 8px;
+    background-color: #1e2326;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.certificaciones .idioma .progreso-idioma{
+    height: 100%;
+    background-color: #1CB698;
+    transition: width 1s ease;
+}
+.certificaciones .herramientas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+.certificaciones .herramientas .tag{
+    background-color: #1e2326;
+    color: #1CB698;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid #1CB698;
+    transition: all 0.3s ease;
+}
+.certificaciones .herramientas .tag:hover{
+    background-color: #1CB698;
+    color: #1e2326;
+}
+.certificaciones .col h3.herramientas-title{
+    margin-top: 30px;
+}
+
 /* SECCION SERVICIOS */
 .servicios{
     background-color: #1e2326;
@@ -795,6 +952,21 @@ footer .arriba{
     }
     .skills .fila .col .barra-skill{
         width: 100%;
+    }
+
+    .certificaciones .fila{
+        display: block;
+    }
+    .certificaciones .col{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .servicios .cards{
+        justify-content: center;
+    }
+    .servicios .card{
+        max-width: 100%;
     }
 
     .curriculum .fila{

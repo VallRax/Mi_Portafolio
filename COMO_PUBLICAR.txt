@@ -1,0 +1,48 @@
+# INSTRUCCIONES PARA PUBLICAR EN NETLIFY
+# ==========================================
+
+## PASOS RÁPIDOS (5 minutos):
+
+1. Ve a: https://www.netlify.com/
+
+2. Crea una cuenta gratuita:
+   - Puedes usar tu cuenta de GitHub
+   - O con Google
+   - O con email
+
+3. Una vez dentro del Dashboard de Netlify:
+   - Verás una zona grande que dice "Want to deploy a new site?"
+   - ARRASTRA toda la carpeta "Mi_Portafolio" ahí
+   - O haz click en "Add new site" → "Deploy manually"
+
+4. ¡Listo! Netlify te dará una URL como:
+   https://random-name-123456.netlify.app
+
+5. PERSONALIZAR TU URL:
+   - Click en "Site settings"
+   - Click en "Change site name" 
+   - Escribe: jairo-alvarez-portafolio
+   - Tu URL será: https://jairo-alvarez-portafolio.netlify.app
+
+6. GENERAR QR:
+   - Ve a: https://www.qr-code-generator.com/
+   - Pega tu URL de Netlify
+   - Personaliza (puedes usar el color verde #1CB698)
+   - Descarga el QR en alta calidad
+
+## ARCHIVOS IMPORTANTES:
+- netlify.toml (Ya está configurado ✓)
+- index.html (Página principal ✓)
+- estilo.css (Estilos ✓)
+- script.js (JavaScript ✓)
+- docs/CV-JairoA.pdf (Tu CV ✓)
+
+## ACTUALIZAR TU SITIO:
+- Simplemente arrastra la carpeta actualizada otra vez
+- O usa GitHub para deploy automático
+
+## NOTAS:
+- Es 100% GRATIS
+- SSL/HTTPS incluido
+- Sin límites de visitas para portafolios
+- Funciona perfecto con QR codes
