@@ -15,6 +15,14 @@ function seleccionar(){
     document.getElementById("nav").classList = "";
     menuVisible = false;
 }
+
+// Cerrar menú al hacer clic en cualquier enlace del menú
+document.addEventListener('DOMContentLoaded', function() {
+    const menuLinks = document.querySelectorAll('#nav a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', seleccionar);
+    });
+});
 //Funcion que aplica las animaciones de las habilidades
 function efectoHabilidades(){
     var skills = document.getElementById("skills");

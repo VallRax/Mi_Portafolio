@@ -4,10 +4,20 @@
     font-family: 'Work Sans';
     margin: 0;
     padding: 0;
+    /* Mejora el tap en dispositivos táctiles */
+    -webkit-tap-highlight-color: rgba(28, 182, 152, 0.3);
 }
 html{
     /* me permite deslizar cuando hago clic en los links del menu */
     scroll-behavior: smooth;
+    /* Evita el zoom en inputs en iOS */
+    -webkit-text-size-adjust: 100%;
+    /* Mejora el scroll en dispositivos móviles */
+    -webkit-overflow-scrolling: touch;
+}
+body{
+    /* Previene el rebote en iOS Safari */
+    overscroll-behavior-y: none;
 }
 /* MENU */
 .contenedor-header{
@@ -927,6 +937,7 @@ footer .arriba{
         top: 75px;
         background-color: #252A2E;
         width: 180px;
+        z-index: 100;
     }
     nav.responsive ul{
         display: block !important;
@@ -935,64 +946,394 @@ footer .arriba{
         border-bottom: 1px solid #fff;
         padding: 10px 0;
     }
+    
+    /* Ajustes para tablets */
+    .inicio .contenido-banner{
+        max-width: 300px;
+    }
+    
+    .sobremi .fila,
+    .skills .fila,
+    .certificaciones .fila{
+        gap: 20px;
+    }
 }
+
 @media screen and (max-width:700px){
+    /* Header y navegación */
+    .contenedor-header header{
+        padding: 10px 15px;
+    }
+    
+    .contenedor-header header .logo a{
+        font-size: 28px;
+    }
+    
+    /* Sección Inicio */
+    .inicio{
+        padding: 20px;
+    }
+    
+    .inicio .contenido-banner{
+        max-width: 280px;
+        padding: 15px;
+        border-radius: 30px;
+    }
+    
+    .inicio .contenido-banner img{
+        width: 70%;
+        margin-top: 20px;
+    }
+    
+    .inicio .contenido-banner h1{
+        font-size: 32px;
+        margin-top: 20px;
+    }
+    
+    .inicio .contenido-banner h2{
+        font-size: 14px;
+    }
+    
+    .inicio .contenido-banner .redes a{
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        margin: 20px 3px;
+        font-size: 18px;
+    }
+    
+    /* Sobre Mi */
+    .sobremi{
+        padding: 30px 15px;
+    }
+    
+    .sobremi h2{
+        font-size: 36px;
+    }
+    
+    .sobremi .contenido-seccion p{
+        font-size: 16px;
+        line-height: 24px;
+        text-align: justify;
+    }
+    
     .sobremi .fila{
         display: block;
     }
+    
     .sobremi .fila .col{
-        width: fit-content;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .sobremi .fila .col h3{
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    .sobremi .fila .col ul li strong{
+        width: 110px;
+        font-size: 14px;
+    }
+    
+    .sobremi .fila .col .contenedor-intereses{
+        justify-content: center;
+    }
+    
+    .sobremi .fila .col .contenedor-intereses .interes{
+        width: 90px;
+        height: 90px;
+        margin: 0 8px 12px 8px;
+    }
+    
+    .sobremi .fila .col .contenedor-intereses .interes i{
+        font-size: 26px;
+    }
+    
+    .sobremi .fila .col .contenedor-intereses .interes span{
+        font-size: 12px;
+    }
+    
+    .sobremi button,
+    .sobremi a.btn-cv{
+        padding: 8px 18px;
+        font-size: 14px;
     }
 
+    /* Skills */
+    .skills{
+        padding: 30px 15px;
+    }
+    
+    .skills h2{
+        font-size: 36px;
+    }
+    
     .skills .fila{
         display: block;
     }
+    
     .skills .fila .col{
         width: 100%;
+        padding: 0 10px;
+        margin-bottom: 30px;
     }
+    
+    .skills .fila .col h3{
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .skills .skill > span{
+        font-size: 15px;
+    }
+    
     .skills .fila .col .barra-skill{
         width: 100%;
     }
 
+    /* Certificaciones */
+    .certificaciones{
+        padding: 30px 15px;
+    }
+    
+    .certificaciones h2{
+        font-size: 36px;
+    }
+    
     .certificaciones .fila{
         display: block;
     }
+    
     .certificaciones .col{
         width: 100%;
         margin-bottom: 30px;
     }
+    
+    .certificaciones .col h3{
+        font-size: 24px;
+    }
+    
+    .certificaciones .certificacion{
+        padding: 12px;
+        gap: 12px;
+    }
+    
+    .certificaciones .certificacion i{
+        font-size: 24px;
+    }
+    
+    .certificaciones .certificacion .info-cert h4{
+        font-size: 16px;
+    }
+    
+    .certificaciones .herramientas .tag{
+        font-size: 12px;
+        padding: 6px 12px;
+    }
 
+    /* Servicios */
+    .servicios{
+        padding: 30px 15px;
+    }
+    
+    .servicios h2{
+        font-size: 36px;
+    }
+    
     .servicios .cards{
         justify-content: center;
+        gap: 15px;
     }
+    
     .servicios .card{
         max-width: 100%;
+        padding: 20px;
+    }
+    
+    .servicios .card h3{
+        font-size: 20px;
+    }
+    
+    .servicios .card .icono{
+        font-size: 24px;
+    }
+    
+    .servicios .card .acciones{
+        flex-direction: column;
+    }
+    
+    .servicios .card .btn-servicio,
+    .servicios .card .btn-secundario{
+        width: 100%;
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 14px;
     }
 
+    /* Curriculum */
+    .curriculum{
+        padding: 30px 15px;
+    }
+    
+    .curriculum h2{
+        font-size: 36px;
+    }
+    
     .curriculum .fila{
         display: block;
     }
+    
     .curriculum .fila .col{
-        width: 90%;
+        width: 100%;
+        padding: 0;
+        border: none !important;
+        margin-bottom: 30px;
     }
+    
+    .curriculum .fila .col h3{
+        font-size: 24px;
+    }
+    
+    .curriculum .fila .izquierda{
+        border-right: none;
+    }
+    
     .curriculum .fila .derecha{
-        margin-left: 20px;
+        border-left: none;
+        margin-left: 0;
+    }
+    
+    .curriculum .fila .item{
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .curriculum .fila .item h4{
+        font-size: 18px;
+    }
+    
+    .curriculum .fila .item .casa{
+        font-size: 16px;
+    }
+    
+    .curriculum .fila .item p{
+        font-size: 14px;
+        line-height: 22px;
+    }
+    
+    .curriculum .fila .izq{
+        border-right: none;
+        margin-right: 0;
+    }
+    
+    .curriculum .fila .der{
+        border-left: none;
+        margin-left: 0;
+    }
+    
+    .curriculum .fila .item .conectori,
+    .curriculum .fila .item .conectord{
+        display: none;
     }
 
+    /* Portfolio */
+    .portfolio{
+        padding: 30px 15px;
+    }
+    
+    .portfolio h2{
+        font-size: 36px;
+    }
+    
     .portfolio .galeria{
         display: block;
         width: 100%;
     }
+    
     .portfolio .galeria .proyecto{
         max-width: 100%;
+        margin: 10px 0;
     }
+    
     .portfolio .galeria .proyecto img{
         width: 100%;
+        height: 200px;
     }
+
+    /* Contacto */
+    .contacto{
+        padding: 30px 15px;
+    }
+    
+    .contacto h2{
+        font-size: 36px;
+    }
+    
     .contacto .fila{
         display: block;
     }
-    .contacto .fila .col{
+    
+    .contacto .col{
         width: 100%;
+        padding: 10px 0;
+    }
+    
+    .contacto .col input,
+    .contacto .col textarea{
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    .contacto .col .info{
+        position: static;
+        transform: none;
+        margin-top: 20px;
+        max-width: 100%;
+    }
+    
+    .contacto button{
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    
+    /* Footer */
+    footer{
+        padding: 40px 15px 25px 15px;
+    }
+    
+    footer .redes a{
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        margin: 20px 3px;
+        font-size: 18px;
+    }
+}
+
+/* Responsive extra para móviles muy pequeños */
+@media screen and (max-width:400px){
+    .inicio .contenido-banner h1{
+        font-size: 28px;
+    }
+    
+    .sobremi h2,
+    .skills h2,
+    .certificaciones h2,
+    .servicios h2,
+    .curriculum h2,
+    .portfolio h2,
+    .contacto h2{
+        font-size: 32px;
+    }
+    
+    .sobremi .fila .col .contenedor-intereses .interes{
+        width: 80px;
+        height: 80px;
+        margin: 0 5px 10px 5px;
+    }
+    
+    .curriculum .fila .item .casa{
+        font-size: 14px;
     }
 }
