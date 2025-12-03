@@ -12,6 +12,7 @@ html{
     scroll-behavior: smooth;
     /* Evita el zoom en inputs en iOS */
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     /* Mejora el scroll en dispositivos móviles */
     -webkit-overflow-scrolling: touch;
 }
@@ -50,12 +51,31 @@ body{
     text-align: none;
     color: #fff;
     margin: 0 15px;
-    padding: 3px;
-    transition: .5s;
+    padding: 3px 2px;
+    transition: color .3s ease;
     text-decoration: none;
+    position: relative;
 }
 .contenedor-header header nav ul li a:hover{
     color: #1CB698;
+}
+/* Subrayado animado bajo los enlaces del header */
+.contenedor-header header nav ul li a::after{
+    content: "";
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 2px;
+    background: #1CB698;
+    transition: width .25s ease;
+}
+.contenedor-header header nav ul li a:hover::after{
+    width: 100%;
+}
+.contenedor-header header nav ul li a.active{
+    color: #1CB698;
+}
+.contenedor-header header nav ul li a.active::after{
+    width: 100%;
 }
 .nav-responsive{
     background-color: #1CB698;
@@ -67,13 +87,18 @@ body{
 }
 /* SECCION I N I C I O */
 .inicio{
-    background: linear-gradient(to top, rgba(30,35,38,.8), rgba(30,35,38,1)),
-    url(img/fondo.jpg);
+    background: radial-gradient(1200px circle at 10% 20%, rgba(28,182,152,0.12), transparent 40%),
+                radial-gradient(1000px circle at 90% 80%, rgba(28,182,152,0.08), transparent 45%),
+                linear-gradient(to top, rgba(30,35,38,.9), rgba(30,35,38,1)),
+                url(img/fondo.jpg);
     background-size: cover;
+    background-blend-mode: screen, screen, normal, normal;
     height: 100vh;
     color: #fff;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 .inicio .contenido-banner{
     padding: 20px;
@@ -82,6 +107,8 @@ body{
     margin: auto;
     text-align: center;
     border-radius: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    animation: floatCard 6s ease-in-out infinite;
 }
 .inicio .contenido-banner img{
     margin-top: 40px;
@@ -89,32 +116,105 @@ body{
     display: block;
     width: 80%;
     margin: auto;
-    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(28,182,152,0.25);
+    animation: pulseRing 4s ease-in-out infinite;
 }
 .inicio .contenido-banner h1{
     margin-top: 40px;
     font-size: 42px;
     font-family: 'Righteous';
+    background: linear-gradient(90deg, #ffffff, #1CB698);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3s linear infinite;
 }
 .inicio .contenido-banner h2{
     font-size: 15px;
-    font-weight: normal;
+    font-weight: 600;
+    color: #d8fff7;
+    opacity: 0.9;
+    min-height: 22px;
+    letter-spacing: .3px;
 }
 .inicio .contenido-banner .redes a{
     color: #fff;
     display: inline-block;
     text-decoration: none;
-    border: 1px solid #fff;
+    border: 1px solid rgba(255,255,255,0.85);
     border-radius: 100%;
     width: 42px;
     height: 42px;
     line-height: 42px;
     margin: 40px 5px;
     font-size: 20px;
-    transition: .3s;
+    transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease;
+    box-shadow: 0 6px 16px rgba(28,182,152,0.25);
+}
+/* Scroll reveal base */
+.pre-reveal{ opacity: 0; transform: translateY(18px) scale(.98); transition: opacity .6s ease, transform .6s ease; }
+.reveal{ opacity: 1; transform: translateY(0) scale(1); }
+
+/* Elevate cards and gallery items */
+.servicios .card, .curriculum .item, .portfolio .galeria .proyecto{
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.servicios .card:hover, .curriculum .item:hover, .portfolio .galeria .proyecto:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+}
+
+/* Improve portfolio overlay transition */
+.portfolio .galeria .proyecto .overlay{ transition: opacity .35s ease, margin .35s ease; }
+
+/* Buttons micro-interactions */
+.sobremi a.btn-cv, .servicios .card .btn-servicio, .servicios .card .btn-secundario, .contacto button{
+    transform: translateY(0);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.sobremi a.btn-cv:hover, .servicios .card .btn-servicio:hover, .servicios .card .btn-secundario:hover, .contacto button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(28,182,152,0.25);
 }
 .inicio .contenido-banner .redes a:hover{
     background-color: #1CB698;
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Efectos hero: animaciones suaves */
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+@keyframes shimmer {
+    0% { filter: drop-shadow(0 0 0 rgba(28,182,152,0)); }
+    50% { filter: drop-shadow(0 0 6px rgba(28,182,152,0.35)); }
+    100% { filter: drop-shadow(0 0 0 rgba(28,182,152,0)); }
+}
+@keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(28,182,152,0.35); }
+    50% { box-shadow: 0 0 0 12px rgba(28,182,152,0.0); }
+    100% { box-shadow: 0 0 0 0 rgba(28,182,152,0.0); }
+}
+
+/* Partículas decorativas en el hero */
+.inicio::before, .inicio::after{
+    content: "";
+    position: absolute;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(28,182,152,0.25) 0%, rgba(28,182,152,0) 70%);
+    filter: blur(4px);
+    animation: floatBlob 10s ease-in-out infinite;
+}
+.inicio::before{ top: 15%; left: -60px; animation-delay: 0.5s; }
+.inicio::after{ bottom: 10%; right: -60px; animation-delay: 2s; }
+@keyframes floatBlob {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(20px,-10px) scale(1.08); }
 }
 .sobremi{
     background-color: #1e2326;
@@ -506,6 +606,8 @@ body{
     background-color: #1CB698;
     transition: width 1s ease;
 }
+.certificaciones .idioma .progreso-idioma.nivel-100{ width: 100%; }
+.certificaciones .idioma .progreso-idioma.nivel-75{ width: 75%; }
 .certificaciones .herramientas{
     display: flex;
     flex-wrap: wrap;

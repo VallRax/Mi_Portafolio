@@ -20,8 +20,48 @@ function seleccionar(){
 document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = document.querySelectorAll('#nav a');
     menuLinks.forEach(link => {
-        link.addEventListener('click', seleccionar);
+        link.addEventListener('click', function(e){
+            // closing menu for mobile
+            seleccionar();
+            // smooth scroll with header offset
+            const href = this.getAttribute('href');
+            if(href && href.startsWith('#')){
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if(target){
+                    const header = document.querySelector('.contenedor-header');
+                    const headerH = header ? header.offsetHeight : 0;
+                    const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 10;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }
+        });
     });
+
+    // Abrir/cerrar menú en móviles al tocar el icono hamburguesa
+    const toggler = document.querySelector('.nav-responsive');
+    if (toggler) {
+        toggler.addEventListener('click', mostrarOcultarMenu);
+    }
+
+    // Active link on scroll
+    const sections = Array.from(document.querySelectorAll('section'));
+    const setActive = () => {
+        const header = document.querySelector('.contenedor-header');
+        const headerH = header ? header.offsetHeight : 0;
+        let currentId = '';
+        sections.forEach(sec => {
+            const top = sec.offsetTop - headerH - 20;
+            if(window.pageYOffset >= top) currentId = sec.id;
+        });
+        menuLinks.forEach(a => {
+            const href = a.getAttribute('href');
+            if(href && href.slice(1) === currentId){ a.classList.add('active'); }
+            else { a.classList.remove('active'); }
+        });
+    };
+    window.addEventListener('scroll', setActive);
+    setActive();
 });
 //Funcion que aplica las animaciones de las habilidades
 function efectoHabilidades(){
@@ -49,3 +89,8 @@ function efectoHabilidades(){
 window.onscroll = function(){
     efectoHabilidades();
 } 
+
+// Improve performance of scroll effects on mobile
+if('scrollBehavior' in document.documentElement.style){
+    try{ window.history.scrollRestoration = 'manual'; }catch(e){}
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO y Social Media -->
     <meta name="description" content="Portafolio profesional de Jairo Alvarez - Ingeniero Informático especializado en desarrollo web, Java, TypeScript y tecnologías modernas.">
@@ -16,6 +16,8 @@
     <meta name="apple-mobile-web-app-title" content="Jairo Alvarez">
     
     <!-- Android Meta Tags -->
+    <!-- theme-color supported by Chrome, Safari, Edge (progressive enhancement) -->
+    <!-- Note: theme-color is not supported by Firefox, Firefox for Android, Opera but is safely ignored -->
     <meta name="theme-color" content="#1CB698">
     <meta name="mobile-web-app-capable" content="yes">
     
@@ -55,7 +57,7 @@
                 <img src="img/hero.jpg" alt="">
             </div>
             <h1>JAIRO ALVAREZ</h1>
-            <h2>Ingeniero Informatico</h2>
+            <h2 class="typewriter" data-text="Ingeniero Informático · Desarrollador Web · Full Stack"></h2>
             <div class="redes">
                 <a href="https://www.linkedin.com/in/jairo-alvarez-salazar-88aa41224/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Jairo Alvarez" title="LinkedIn">
                     <i class="fa-brands fa-linkedin"></i>
@@ -65,6 +67,9 @@
                 </a>
                 <a href="https://www.facebook.com/share/1Bz3PH8Ws5/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Jairo Alvarez" title="Facebook">
                     <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://github.com/VallRax" target="_blank" rel="noopener noreferrer" aria-label="GitHub @VallRax" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
                 </a>
             </div>
         </div>
@@ -316,7 +321,7 @@
                             <span>Nativo</span>
                         </div>
                         <div class="barra-idioma">
-                            <div class="progreso-idioma" style="width: 100%;"></div>
+                            <div class="progreso-idioma nivel-100"></div>
                         </div>
                     </div>
                     <div class="idioma">
@@ -325,10 +330,10 @@
                             <span>Intermedio-Avanzado</span>
                         </div>
                         <div class="barra-idioma">
-                            <div class="progreso-idioma" style="width: 75%;"></div>
+                            <div class="progreso-idioma nivel-75"></div>
                         </div>
                     </div>
-                    <h3 style="margin-top: 30px;">Herramientas</h3>
+                    <h3 class="herramientas-title">Herramientas</h3>
                     <div class="herramientas">
                         <span class="tag">Docker</span>
                         <span class="tag">Azure DevOps</span>
@@ -394,9 +399,9 @@
                         </div>
                     </div>
                     <div class="item izq">
-                        <h4>Universitaro</h4>
+                        <h4>Universitario</h4>
                         <span class="casa">Intituto DUOC UC Sede San Joaquin, Santiago, San Joaquin</span>
-                        <span class="fecha">2021 - 2024</span>
+                        <span class="fecha">2020 - 2024</span>
                         <p>Ingreso a la institución el año 2021 y finalizo en diciembre de 2024 mi estudio de Ingeniero Informatico.</p>
                         <div class="conectori">
                             <div class="circuloi"></div>
@@ -557,9 +562,51 @@
             <a href="https://www.facebook.com/share/1Bz3PH8Ws5/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Jairo Alvarez" title="Facebook">
                 <i class="fa-brands fa-facebook-f"></i>
             </a>
+            <a href="https://github.com/VallRax" target="_blank" rel="noopener noreferrer" aria-label="GitHub @VallRax" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
+        <script>
+            // Typewriter effect
+            (function(){
+                const el = document.querySelector('.typewriter');
+                if(!el) return;
+                const text = el.getAttribute('data-text') || el.textContent;
+                const parts = text.split(' · ');
+                let part = 0, i = 0, deleting = false;
+                function tick(){
+                    const current = parts[part];
+                    if(!deleting){
+                        el.textContent = current.slice(0, ++i);
+                        if(i === current.length){
+                            deleting = true;
+                            setTimeout(tick, 1400); return;
+                        }
+                        setTimeout(tick, 60);
+                    } else {
+                        el.textContent = current.slice(0, --i);
+                        if(i === 0){
+                            deleting = false; part = (part+1) % parts.length;
+                        }
+                        setTimeout(tick, 40);
+                    }
+                }
+                tick();
+            })();
+
+            // Scroll reveal animations for sections
+            (function(){
+                const observer = new IntersectionObserver((entries)=>{
+                    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal'); });
+                }, {threshold: 0.12});
+                document.querySelectorAll('section, .item, .proyecto').forEach(el=>{
+                    el.classList.add('pre-reveal');
+                    observer.observe(el);
+                });
+            })();
+        </script>
 </body>
 </html>
