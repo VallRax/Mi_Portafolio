@@ -21,4 +21,4 @@ Como ya se sabe estoy cursando una Ingenieria en informatica donde e llegado a t
 
 Estas certificaciones las obtuve en el año 2 de mi carrera (2022).+
 
-Mi CV esta cargado en el repositorio, cualquier información sobre mi para asi tengan un nivel más detallado a nivel profesional sobre mí.
+Mi CV esta cargado en el repositorio, cualquier información sobre mi para asi tengan un nivel más detallado a nivel profesional sobre mí
