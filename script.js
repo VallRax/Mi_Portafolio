@@ -45,6 +45,129 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Active link on scroll
+
+
+            /* -----------------------------
+               Contact form sending (Netlify forms via AJAX)
+               - Uses the Netlify forms endpoint by posting to '/'.
+               - Keeps the page single-page (AJAX) and shows feedback.
+               - If Netlify is not available, the form will still degrade to a normal POST.
+               ----------------------------- */
+
+            document.addEventListener('DOMContentLoaded', function(){
+                const contactoSection = document.getElementById('contacto');
+                if(!contactoSection) return;
+                const form = contactoSection.querySelector('form.contact-form');
+                if(!form) return;
+                form.addEventListener('submit', handleContactSubmit);
+            });
+
+            function handleContactSubmit(e){
+                            const form = e.target;
+                            // If the form is configured to submit to an external service (FormSubmit),
+                            // support two modes:
+                            // - AJAX mode (user checked "_ajax"): send to FormSubmit AJAX endpoint and keep user on page
+                            // - Normal mode: allow browser to submit (redirect via _next)
+                            if(form && form.dataset && form.dataset.external === 'formsubmit'){
+                                // check _ajax checkbox presence
+                                const ajaxInput = form.querySelector('input[name="_ajax"]');
+                                let sendAjax = false;
+                                if(ajaxInput){
+                                    if(ajaxInput.type === 'checkbox'){
+                                        sendAjax = !!ajaxInput.checked;
+                                    } else {
+                                        const v = (ajaxInput.value || '').toString().toLowerCase();
+                                        sendAjax = (v === '1' || v === 'true' || v === 'yes');
+                                    }
+                                }
+                                if(!sendAjax){
+                                    return; // let the browser submit the form to FormSubmit (will redirect to _next)
+                                }
+
+                                // AJAX submission to FormSubmit's AJAX endpoint
+                                e.preventDefault();
+                                showContactMessage('Enviando...', 'info');
+                                const submitBtn = form.querySelector('button[type="submit"]');
+                                if(submitBtn) submitBtn.disabled = true;
+                                const email = form.getAttribute('action').replace('https://formsubmit.co/','');
+                                const ajaxUrl = `https://formsubmit.co/ajax/${encodeURIComponent(email)}`;
+                                const formData = new FormData(form);
+                                fetch(ajaxUrl, {
+                                    method: 'POST',
+                                    headers: { 'Accept': 'application/json' },
+                                    body: formData
+                                }).then(async res => {
+                                    const data = await res.json().catch(()=>null);
+                                    if(res.ok){
+                                        showContactMessage('Mensaje enviado. Gracias — te contactaré pronto.', 'success');
+                                        form.reset();
+                                        // Redirect back to home after 3 seconds
+                                        setTimeout(()=>{ window.location.href = '/'; }, 3000);
+                                    } else {
+                                        console.error('FormSubmit AJAX error', data || res.statusText);
+                                        showContactMessage('No se pudo enviar por AJAX. Intentando envío normal...', 'error');
+                                        // fallback: submit normally (this will open FormSubmit verification/redirect)
+                                        form.removeEventListener('submit', handleContactSubmit);
+                                        form.submit();
+                                    }
+                                }).catch(err => {
+                                    console.error('Network error FormSubmit AJAX', err);
+                                    showContactMessage('Error de red. Se intentará el envío normal.', 'error');
+                                    form.removeEventListener('submit', handleContactSubmit);
+                                    form.submit();
+                                }).finally(()=> { if(submitBtn) submitBtn.disabled = false; });
+                                return;
+                            }
+                            e.preventDefault();
+                showContactMessage('Enviando...', 'info');
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if(submitBtn) submitBtn.disabled = true;
+
+                // Build form payload
+                const formData = new FormData(form);
+
+                // Netlify expects url-encoded body when submitted via fetch
+                const body = new URLSearchParams();
+                for(const pair of formData.entries()){
+                    body.append(pair[0], pair[1]);
+                }
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: body.toString()
+                }).then(res => {
+                    if(res.ok){
+                        showContactMessage('Mensaje enviado. Gracias — te contactaré pronto.', 'success');
+                        form.reset();
+                        // Redirect back to home after 3 seconds
+                        setTimeout(()=>{ window.location.href = '/'; }, 3000);
+                    } else {
+                        console.error('Netlify form error', res.statusText);
+                        showContactMessage('No se pudo enviar. Intenta recargar la página y probar de nuevo.', 'error');
+                    }
+                }).catch(err => {
+                    console.error('Network error sending Netlify form', err);
+                    showContactMessage('Error de red. Si persiste, usa tu cliente de correo.', 'error');
+                }).finally(()=> { if(submitBtn) submitBtn.disabled = false; });
+            }
+
+            function showContactMessage(text, type){
+                const section = document.getElementById('contacto');
+                if(!section) return;
+                let msg = section.querySelector('.contact-msg');
+                if(!msg){
+                    msg = document.createElement('div');
+                    msg.className = 'contact-msg';
+                    msg.style.marginTop = '12px';
+                    msg.style.fontWeight = '600';
+                    section.querySelector('.contenido-seccion').appendChild(msg);
+                }
+                msg.textContent = text;
+                msg.style.color = type === 'success' ? '#1CB698' : type === 'error' ? '#ff6b6b' : '#fff';
+            }
+
+
     const sections = Array.from(document.querySelectorAll('section'));
     const setActive = () => {
         const header = document.querySelector('.contenedor-header');

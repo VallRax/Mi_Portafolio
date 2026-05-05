@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gracias</title>
+  <link rel="stylesheet" href="estilo.css">
+  <style>
+    body{ background:#1e2326; color:#fff; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+    .card{ max-width:640px; text-align:center; padding:28px; background:#252A2E; border-radius:12px; }
+    .card h1{ font-family:'Righteous'; color:#1CB698; margin-bottom:8px; }
+    .card p{ color:#dfeffb; margin-bottom:18px; }
+    .card a{ display:inline-block; padding:10px 16px; background:#1CB698; color:#10221a; border-radius:8px; text-decoration:none; font-weight:700; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Gracias</h1>
+    <p>Tu mensaje fue enviado correctamente. Te contactaré pronto.</p>
+    <p>Serás redirigido a la página principal en unos segundos.</p>
+    <a href="/">Volver al sitio</a>
+  </div>
+  <script>
+    // Redirect back to home after 5 seconds
+    setTimeout(()=>{ window.location.href = '/'; }, 5000);
+  </script>
+</body>
+</html>
